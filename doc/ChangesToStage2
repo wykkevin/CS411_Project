@@ -1,0 +1,12 @@
+We made some changes to our UML Diagram and relational schema based on the feedback that we need to have a table for each many-to-many relationship.
+
+# Removed Country Table
+Since we don't have much additional information about the `Country` entity, we will remove that entity and keep it as a field in the `Trending` table instead. Since we only use the data from the US, we don't need to set the country as a primary key. This will change if we plan to use data from other countries later on.
+
+# Add `TrendingDate` Table and let `Trending` Table Represents the Many-to-Many Relation
+The `Trending` table we have currently is a table that represents the many-to-many relationship between the videos and trending dates. Therefore, we added a `TrendingDate` entity in the diagram to display that.
+
+# Reason to Keep the `Tag` Table
+We created a `Tag` table, since most videos have a significantly large number of tags, with the highest number being close to 1000, and the median being 77 unique tags. As we want to implement the searchability of tags within a reasonable amount of time, we must have this table to avoid sacrificing a lot of computing time and power. 
+
+We also added, removed, and updated some of the fields of the graph and made corresponding changes for the relational schema in Stage 3.

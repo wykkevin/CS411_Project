@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Overall Popular Channels</title>
+</head>
+<body>
+  <h1>Overall Popular Channels</h1>
+  <% if (results.length === 0) { %>
+    <p>No results found.</p>
+  <% } else { %>
+    <table>
+  <thead>
+    <tr>
+      <th>Channel Title</th>
+      <th>Subscriber Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% results.forEach((result) => { %>
+      <tr>
+        <td><%= result.channelTitle%></td>
+        <td><%= result.subscribersCount%></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+  <% } %>
+</body>
+</html>

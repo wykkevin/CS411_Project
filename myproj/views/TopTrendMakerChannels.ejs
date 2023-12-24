@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Top Channels</title>
+</head>
+<body>
+  <h1>Top Trend Maker Channels</h1>
+  <% if (results.length === 0) { %>
+    <p>No results found.</p>
+  <% } else { %>
+    <table>
+  <thead>
+    <tr>
+      <th>Channel Id</th>
+      <th>Channel Title</th>
+      <th>Channel Subscribers Count</th>
+      <th>Channel Trending Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% results.forEach((result) => { %>
+      <tr>
+        <td><%= result.channelId %></td>
+        <td><%= result.channelTitle %></td>
+        <td><%= result.subscribersCount %></td>
+        <td><%= result.channelTrendingCount %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+  <% } %>
+</body>
+</html>

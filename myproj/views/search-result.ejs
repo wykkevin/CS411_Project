@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Results</title>
+</head>
+<body>
+  <h1>Search Results</h1>
+  <% if (results.length === 0) { %>
+    <p>No results found for <%= videoTitle %>.</p>
+  <% } else { %>
+    <table>
+  <thead>
+    <tr>
+      <th>Video Image</th>
+      <th>Video Id</th>
+      <th>Video Title</th>
+      <th>Channel Title</th>
+      <th>Published Date</th>
+      <th>Update Video</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% results.forEach((result) => { %>
+      <tr>
+        <td><img src="<%= result.thumbnail_link %>"></td>
+        <td><%= result.videoId %></td>
+        <td><%= result.title %></td>
+        <td><%= result.channelTitle %></td>
+        <td><%= result.publishedDate %></td>
+        <td>
+          <button onclick="update('<%= result.videoId %>')">
+            Update
+          </button>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<script>
+  function update(videoId) {
+    const newTitle = prompt("Enter new video title:");
+    const newChannel = prompt("Enter new channel title:");
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      alert("Update successful! Video " + videoId + " will now have Title " + newTitle +" And channel " +newChannel);
+    }
+    xhr.open("POST", "/update");
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify({videoId, title: newTitle, channelTitle: newChannel}));
+  }
+</script>
+  <% } %>
+</body>
+</html>

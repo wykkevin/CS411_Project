@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trending Categories</title>
+</head>
+<body>
+  <h1>Ranked Trending Categories</h1>
+  <% if (results.length === 0) { %>
+    <p>No results found.</p>
+  <% } else { %>
+    <table>
+  <thead>
+    <tr>
+      <th>Category Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% results.forEach((result) => { %>
+      <tr>
+        <td><%= result.categoryName%></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+  <% } %>
+</body>
+</html>

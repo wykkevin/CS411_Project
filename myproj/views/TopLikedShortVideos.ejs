@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Top Liked Short Videos</title>
+</head>
+<body>
+  <h1>Top Liked Short Videos With Many Comments</h1>
+  <% if (results.length === 0) { %>
+    <p>No results found.</p>
+  <% } else { %>
+    <table>
+  <thead>
+    <tr>
+      <th>Video Image</th>
+      <th>Video Title</th>
+      <th>Number of Likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% results.forEach((result) => { %>
+      <tr>
+<td><img src="<%= result.thumbnail_link %>"></td>
+        <td><%= result.title %></td>
+        <td><%= result.videoLikeCount %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+  <% } %>
+</body>
+</html>

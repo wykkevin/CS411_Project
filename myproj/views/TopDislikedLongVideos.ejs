@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Top Disliked Long Videos</title>
+</head>
+<body>
+  <h1>Top Disliked Long Videos</h1>
+  <% if (results.length === 0) { %>
+    <p>No results found.</p>
+  <% } else { %>
+    <table>
+  <thead>
+    <tr>
+	<th>Video Image</th>
+      <th>Video Title</th>
+      <th>Number of Dislikes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% results.forEach((result) => { %>
+      <tr>
+<td><img src="<%= result.title %>"></td>
+        <td><%= result.title %></td>
+        <td><%= result.videoDislikeCount %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+  <% } %>
+</body>
+</html>

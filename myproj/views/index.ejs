@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <title>Youtube Trending Videos</title>
+   <h1 style="text-align: center;">Team 061: Youtube Trending Videos</h1>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ </head>
+
+<h2 style="text-align: center;">Search</h2>
+ <body>
+   <div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+         <h2>Search for Video Information</h2>
+         <form action="search" method="GET">
+           <div class="form-group">
+             <label for="videoTitle">Video Title</label>
+             <input type="text" id="videoTitle" name="title" placeholder="Title">
+             <label for="start">Publish start date:</label>
+             <input type="date" id="publishStart" name="start" value="2020-08-03">
+             <label for="start">Publish end date:</label>
+             <input type="date" id="publishEnd" name="end" value="2023-02-20">
+             <label for="channelName">Channel Title</label>
+             <input type="text" id="channelName" name="channelName" placeholder="Channel Title">
+           </div>
+           <button type="submit" class="btn btn-primary">Search Video</button>
+         </form>
+   </div>
+ </div>
+</div>
+
+<body>
+   <div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+         <h2>Search for Video Trending Information</h2>
+         <form action="searchTrending" method="GET">
+           <div class="form-group">
+             <label for="videoTitle">Video Title</label>
+             <input type="text" id="videoTitle" name="title" placeholder="Title">
+             <label for="start">Trending start date:</label>
+             <input type="date" id="trendingStart" name="start" value="2020-08-12">
+             <label for="start">Trending end date:</label>
+             <input type="date" id="trendingEnd" name="end" value="2023-02-21">
+             <label for="channelName">Channel Title</label>
+             <input type="text" id="channelName" name="channelName" placeholder="Channel Title">
+             <label for="likesNumber">Likes</label>
+             <input type="number" id="likesNumber" name="likesNumber" placeholder="100000">
+             <label for="likeRatio">Like ratio</label>
+             <input type="number" id="likeRatio" name="likeRatio" placeholder="0.9">
+             <label for="viewCount">View count</label>
+             <input type="number" id="viewCount" name="viewCount" placeholder="1000000">
+             <label for="commentCount">Comment count</label>
+             <input type="number" id="commentCount" name="commentCount" placeholder="10000">
+           </div>
+           <button type="submit" class="btn btn-primary">Search Trending</button>
+         </form>
+   </div>
+ </div>
+</div>
+
+ <!-- end search, start update -->
+
+ <h2 style="text-align: center;">Change the Data</h2>
+ <div id = "updateMainPage">
+     <div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+        <h2>Update Video (If Video Already Known)</h2>
+        <br>
+        <form method="POST" action="/update">
+        <div class="form-group">
+            <input type="text" name="videoId" placeholder="VideoId (muz-bm-jKAc)">
+            <input type="text" name="title" placeholder="Title (My Video)">
+            <input type="text" name="channelTitle" placeholder="Channel Name (Quiff)"> 
+            
+        </div>
+        <button type="submit"  class="btn btn-primary">Update</button>
+        <!-- //TODO: ADD UPDATE ALERT -->
+        </form>
+        </div>
+      </div>
+      </div>
+  </div>
+  
+ <div id = "insertMainPage">
+   <div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+         <h2>Insert Video</h2>
+         <form method="POST" action="/insert">
+           <div class="form-group">
+             <label for="videoTitle">Video Title</label>
+             <input type="text" id="videoTitle" name="title" placeholder="Title">
+           </div>
+           <button type="submit" class="btn btn-primary">Insert</button>
+         </form>
+         <form method="POST" action="/insertFromFile" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="file">Select CSV file to upload:</label>
+            <input type="file" id="csvfile" name="csvfile">
+          </div>
+          <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+   </div>
+ </div>
+</div>
+
+
+
+  
+  <!-- end of update, start delete -->
+  
+  <div id = "deleteMainPage">
+    <div class="container mt-4">
+    <div class="card">
+      <div class="card-body">
+       <h2>Delete Video</h2>
+       <br>
+       <form method="POST" action="/delete">
+       <div class="form-group">
+           <input type="text" name="videoId" placeholder="VideoId">
+       </div>
+       <button type="submit"  class="btn btn-primary">Delete</button>
+       </form>
+       </div>
+     </div>
+     </div>
+ </div>
+
+<!-- end delete, start show tags -->
+   <div id = "showTags">
+    <div class="container mt-4">
+    <div class="card">
+      <div class="card-body">
+       <h2>Show Tags of Video</h2>
+       <br>
+       <form method="GET" action="/showVideoTags">
+       <div class="form-group">
+           <input type="text" name="videoId" placeholder="VideoId">
+       </div>
+       <button type="submit"  class="btn btn-primary">Show Tags</button>
+       </form>
+       </div>
+     </div>
+     </div>
+ </div>
+  
+  <h2 style="text-align: center;">Top Videos/Channels</h2>
+  <div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+        <form method="GET" action="/showTopLikedLongVideos">
+          <button type="submit"  class="btn btn-primary">Show Top Liked Long Videos With Many Comments</button>
+        </form>
+        <form method="GET" action="/showTopTrendedGoodChannels">
+          <button type="submit"  class="btn btn-primary">Show Top Trended Good Channels</button>
+        </form>
+        <form method="GET" action="/showTopTrendMakerChannels">
+          <button type="submit"  class="btn btn-primary">Show Top Trend Maker Channels</button>
+        </form>
+        <form method="GET" action="/showTopLikedShortVideos">
+          <button type="submit"  class="btn btn-primary">Show Top Liked Short Videos With Many Comments</button>
+        </form>
+        <form method="GET" action="/showTopDislikedShortVideos">
+          <button type="submit"  class="btn btn-primary">Show Top Disliked Short Videos</button>
+        </form>
+        <form method="GET" action="/showTopDislikedLongVideos">
+          <button type="submit"  class="btn btn-primary">Show Top Disliked Long Videos</button>
+        </form>
+        <form method="GET" action="/showMostViewedVideos">
+          <button type="submit"  class="btn btn-primary">Show 100 Most Viewed Videos</button>
+        </form>
+        <form method="GET" action="/showVideosWithMostInteraction">
+          <button type="submit"  class="btn btn-primary">Show Videos With Most Interaction</button>
+        </form>
+        <form method="GET" action="/showOverallPopularChannels">
+          <button type="submit"  class="btn btn-primary">Show Overall Popular Channels</button>
+        </form>
+        <form method="GET" action="/showTrendingCategories">
+          <button type="submit"  class="btn btn-primary">Show Trending Categories</button>
+        </form>
+        <form method="GET" action="/showTopVideosInPastYear">
+          <button type="submit"  class="btn btn-primary">Show Top Videos In Past Year</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
+  
+ </body>
+</html>
